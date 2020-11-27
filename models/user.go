@@ -1,10 +1,10 @@
 package models
 
 type User struct {
-	ID       int64
+	ID       int
 	Name     string
 	Surname  string
-	Age      int64
+	Age      int
 	Gender   string
 	Login    string
 	Password string

@@ -11,7 +11,7 @@ const AuthorizationOperation = `1.Авторизация,
 
 const LoginOperation = `Введити логин и пароль:`
 
-func Authorization() (Login, Password string) {
+func Authorization() (login, password string) {
 	fmt.Println(AuthorizationOperation)
 	var number int64
 	fmt.Scan(&number)
@@ -19,10 +19,9 @@ func Authorization() (Login, Password string) {
 	case 1:
 		fmt.Println(LoginOperation)
 		fmt.Println("login:")
-		fmt.Scan(&Login)
+		fmt.Scan(&login)
 		fmt.Println("password:")
-		fmt.Scan(&Password)
-		return Password, Login
+		fmt.Scan(&password)
 	case 2:
 		fmt.Println("GOOD LUCK")
 	default:
@@ -32,9 +31,9 @@ func Authorization() (Login, Password string) {
 	return
 }
 
-func Login(database *sql.DB, Login, Password string) { //(ok bool)
+func Login(database *sql.DB, login, password string) { //(ok bool)
 	var User models.User
-	_ = database.QueryRow(`SELECT * FROM USERS WHERE Login = ($1) AND password = ($2)`, Login, Password).Scan(
+	_ = database.QueryRow(`SELECT * FROM users WHERE login = ($1) AND password = ($2)`, login, password).Scan(
 		&User.ID,
 		&User.Name,
 		&User.Surname,
