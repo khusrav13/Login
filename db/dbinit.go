@@ -6,7 +6,7 @@ import (
 )
 
 func Dbinit(db *sql.DB)  {
-	DDLs := []string{CreateUsersAccount}
+	DDLs := []string{CreateUsersAccount, CreateATMsTable}
 	for _, ddl := range DDLs {
 		_, err := db.Exec(ddl)
 		if err != nil {
